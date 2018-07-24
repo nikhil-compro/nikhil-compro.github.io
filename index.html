@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+    </head>
+    <body>
+        <p> Registeration Status: <strong id="status"></strong></p>
+        <script>
+            if('serviceworker' in navigator){
+                navigator.serviceworker.register('service-worker.js',{
+                    scope:'./'
+                }).then(function(serviceWorker){
+                    document.getElementById('status').innerHTML = 'successfull';
+                }).catch(function(err){
+                    document.getElementById("status").innerHTML = "Failure";
+                })
+            }else{
+                document.getElementById("status").innerHTML = "Service worker not available";
+            }
+        </script>
+    </body>
+</html>
