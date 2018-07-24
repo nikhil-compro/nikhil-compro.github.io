@@ -32,6 +32,7 @@
                     }
                 }).catch(function(err){
                     document.getElementById("status").innerHTML = "Failure";
+                    console.log("err",err)
                 })
             }else{
                 document.getElementById("status").innerHTML = "Service worker not available";
