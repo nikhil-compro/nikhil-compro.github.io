@@ -9,8 +9,24 @@
             if('serviceWorker' in navigator){
                 navigator.serviceWorker.register('service-worker.js',{
                     scope:'./'
-                }).then(function(serviceWorker){
+                }).then(function(registeration){
                     document.getElementById('status').innerHTML = 'successfull';
+                    var serviceWorker;
+                    if(registeration.installing){
+                        serviceWorker = registeration.installing;
+                        printState("installing");
+                    }else if(registeration.waiting){
+                        serviceWorker = registeration.waiting;
+                        printState("waiting");
+                    }else if(registeration.active){
+                        serviceWorker = registeration.active;
+                        printState("active");
+                    }
+                    if(serviceWorker){
+                        serviceWorker.addEventListener('stateChange',function(e){
+                            printState(e.target.state);
+                        })
+                    }
                 }).catch(function(err){
                     document.getElementById("status").innerHTML = "Failure";
                 })
