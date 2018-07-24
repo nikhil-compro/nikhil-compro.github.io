@@ -27,7 +27,7 @@
                         printState("active");
                     }
                     if(serviceWorker){
-                        serviceWorker.addEventListener('stateChange',function(e){
+                        serviceWorker.addEventListener('statechange',function(e){
                             printState(e.target.state);
                         })
                     }
