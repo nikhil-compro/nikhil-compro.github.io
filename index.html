@@ -6,8 +6,8 @@
     <body>
         <p> Registeration Status: <strong id="status"></strong></p>
         <script>
-            if('serviceworker' in navigator){
-                navigator.serviceworker.register('service-worker.js',{
+            if('serviceWorker' in navigator){
+                navigator.serviceWorker.register('service-worker.js',{
                     scope:'./'
                 }).then(function(serviceWorker){
                     document.getElementById('status').innerHTML = 'successfull';
